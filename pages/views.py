@@ -24,3 +24,12 @@ def contact(request):
 
 def catgory(request):
     return render(request, 'catgory.html')
+
+
+def search(request):
+    posts = Post.objects.filter(status=True)
+    if request.method == 'GET':
+        if s := request.GET.get('s'):
+            posts = posts.filter(title__contains=s)
+    context = {'posts':posts}
+    return render(request, 'index.html', context)
