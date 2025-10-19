@@ -75,12 +75,7 @@
                             <li><a href="category.html">Relationship</a></li>
                         </ul>
                     </li>
-                    <li class="has-children">
-                        <a href="#0" title="">Blog</a>
-                        <ul class="sub-menu">
-                            <li><a href="{% url 'blog:single' %}">Single Blog</a></li>
-                        </ul>
-                    </li>
+                    
                     <li><a href="{% url 'pages:about' %}" title="">About</a></li>
                     <li><a href="{% url 'pages:contact' %}" title="">Contact</a></li>
                 </ul> <!-- end s-header__nav -->
@@ -198,12 +193,12 @@
                         <span></span>
                         <span></span>
                     </div>
-
+                {% for post in posts %}
                     <article class="brick entry" data-aos="fade-up">
 
                         <div class="entry__thumb">
                             <a href="single-standard.html" class="thumb-link">
-                                <img src="{% static 'images/thumbs/masonry/macbook-600.jpg' %}"
+                                <img src="{{post.image}}"
                                     srcset="{% static 'images/thumbs/masonry/macbook-600.jpg' %} 1x, {% static 'images/thumbs/masonry/macbook-1200.jpg' %} 2x"
                                     alt="">
                             </a>
@@ -211,13 +206,12 @@
 
                         <div class="entry__text">
                             <div class="entry__header">
-                                <h1 class="entry__title"><a href="https://www.dreamhost.com/r.cgi?287326">Need Web
-                                        Hosting for Your Websites?</a></h1>
+                                <h1 class="entry__title"><a href="#">{{post.title}}</a></h1>
 
                                 <div class="entry__meta">
-                                    <span class="byline"">By:
+                                    <span class="byline">By:
                                         <span class='author'>
-                                            <a href=" https://www.dreamhost.com/r.cgi?287326">StyleShout</a>
+                                            <a href=" https://www.dreamhost.com/r.cgi?287326">{{post.author}}</a>
                                     </span>
                                     </span>
                                     <span class="cat-links">
@@ -227,211 +221,14 @@
                             </div>
                             <div class="entry__excerpt">
                                 <p>
-                                    Need hosting? We would highly recommend DreamHost.
-                                    Enjoy 100% in-house support, guaranteed performance and uptime, 1-click installs,
-                                    and a super-intuitive control panel to make managing your websites and projects
-                                    easy.
+                                   {{post.description|truncatewords:30}}
                                 </p>
                             </div>
-                            <a class="entry__more-link" href="https://www.dreamhost.com/r.cgi?287326">Learn More</a>
+                            <a class="entry__more-link" href="{% url 'pages:single_post' post.id %}">Learn More</a>
                         </div> <!-- end entry__text -->
 
                     </article> <!-- end article -->
-
-                    <article class="brick entry" data-aos="fade-up">
-
-                        <div class="entry__thumb">
-                            <a href="single-standard.html" class="thumb-link">
-                                <img src="{% static 'images/thumbs/masonry/woodcraft-600.jpg' %}"
-                                    srcset="{% static 'images/thumbs/masonry/woodcraft-600.jpg' %} 1x, {% static 'images/thumbs/masonry/woodcraft-1200.jpg' %} 2x"
-                                    alt="">
-                            </a>
-                        </div> <!-- end entry__thumb -->
-
-                        <div class="entry__text">
-                            <div class="entry__header">
-                                <h1 class="entry__title"><a href="single-standard.html">Just a Normal Simple Blog
-                                        Post.</a></h1>
-
-                                <div class="entry__meta">
-                                    <span class="byline"">By:
-                                        <span class='author'>
-                                            <a href=" #0">Naruto Uzumaki</a>
-                                    </span>
-                                    </span>
-                                    <span class="cat-links">
-                                        <a href="#">Design</a>
-                                        <a href="#">Photography</a>
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="entry__excerpt">
-                                <p>
-                                    Lorem ipsum Sed eiusmod esse aliqua sed incididunt aliqua incididunt mollit id et
-                                    sit proident dolor nulla sed commodo est ad minim elit reprehenderit nisi officia
-                                    aute incididunt velit sint in aliqua cillum in consequat consequat in culpa in anim.
-                                </p>
-                            </div>
-                            <a class="entry__more-link" href="#0">Read More</a>
-                        </div> <!-- end entry__text -->
-
-                    </article> <!-- end entry -->
-
-                    <article class="brick entry" data-aos="fade-up">
-
-                        <div class="entry__thumb">
-                            <a href="single-standard.html" class="thumb-link">
-                                <img src="{% static 'images/thumbs/masonry/tulips-600.jpg' %}"
-                                    srcset="{% static 'images/thumbs/masonry/tulips-600.jpg' %} 1x, {% static 'images/thumbs/masonry/tulips-1200.jpg' %} 2x"
-                                    alt="">
-                            </a>
-                        </div> <!-- end entry__thumb -->
-
-                        <div class="entry__text">
-                            <div class="entry__header">
-                                <h1 class="entry__title"><a href="single-standard.html">10 Interesting Facts About
-                                        Caffeine.</a></h1>
-
-                                <div class="entry__meta">
-                                    <span class="byline"">By:
-                                        <span class='author'>
-                                            <a href=" #0">Shikamaru Nara</a>
-                                    </span>
-                                    </span>
-                                    <span class="cat-links">
-                                        <a href="#">Health</a>
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="entry__excerpt">
-                                <p>
-                                    Lorem ipsum Sed eiusmod esse aliqua sed incididunt aliqua incididunt mollit id et
-                                    sit proident dolor nulla sed commodo est ad minim elit reprehenderit nisi officia
-                                    aute incididunt velit sint in aliqua cillum in consequat consequat in culpa in anim.
-                                </p>
-                            </div>
-                            <a class="entry__more-link" href="#0">Read More</a>
-                        </div> <!-- end entry__text -->
-
-                    </article> <!-- end article -->
-
-                    <article class="brick entry" data-aos="fade-up">
-
-                        <div class="entry__thumb">
-                            <a href="single-standard.html" class="thumb-link">
-                                <img src="{% static 'images/thumbs/masonry/grayscale-600.jpg' %}"
-                                    srcset="{% static 'images/thumbs/masonry/grayscale-600.jpg' %} 1x, {% static 'images/thumbs/masonry/grayscale-1200.jpg' %} 2x"
-                                    alt="">
-                            </a>
-                        </div> <!-- end entry__thumb -->
-
-                        <div class="entry__text">
-                            <div class="entry__header">
-                                <h1 class="entry__title"><a href="single-standard.html">5 Grayscale Coloring
-                                        Techniques.</a></h1>
-
-                                <div class="entry__meta">
-                                    <span class="byline"">By:
-                                        <span class='author'>
-                                            <a href=" #0">Susuke Uchiha</a>
-                                    </span>
-                                    </span>
-                                    <span class="cat-links">
-                                        <a href="#">Design</a>
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="entry__excerpt">
-                                <p>
-                                    Lorem ipsum Sed eiusmod esse aliqua sed incididunt aliqua incididunt mollit id et
-                                    sit proident dolor nulla sed commodo est ad minim elit reprehenderit nisi officia
-                                    aute incididunt velit sint in aliqua cillum in consequat consequat in culpa in anim.
-                                </p>
-                            </div>
-                            <a class="entry__more-link" href="#0">Read More</a>
-                        </div> <!-- end entry__text -->
-
-                    </article> <!-- end article -->
-
-                    <article class="brick entry" data-aos="fade-up">
-
-                        <div class="entry__thumb">
-                            <a href="single-standard.html" class="thumb-link">
-                                <img src="{% static 'images/thumbs/masonry/walk-600.jpg' %}"
-                                    srcset="{% static 'images/thumbs/masonry/walk-600.jpg' %} 1x, {% static 'images/thumbs/masonry/walk-1200.jpg' %} 2x"
-                                    alt="">
-                            </a>
-                        </div> <!-- end entry__thumb -->
-
-                        <div class="entry__text">
-                            <div class="entry__header">
-                                <h1 class="entry__title"><a href="single-standard.html">Using Repetition and Patterns in
-                                        Photography.</a></h1>
-
-                                <div class="entry__meta">
-                                    <span class="byline"">By:
-                                        <span class='author'>
-                                            <a href=" #0">Naruto Uzumaki</a>
-                                    </span>
-                                    </span>
-                                    <span class="cat-links">
-                                        <a href="#">Work</a>
-                                        <a href="#">Lifestyle</a>
-                                    </span>
-                                </div>
-
-                            </div>
-                            <div class="entry__excerpt">
-                                <p>
-                                    Lorem ipsum Sed eiusmod esse aliqua sed incididunt aliqua incididunt mollit id et
-                                    sit proident dolor nulla sed commodo est ad minim elit reprehenderit nisi officia
-                                    aute incididunt velit sint in aliqua cillum in consequat consequat in culpa in anim.
-                                </p>
-                            </div>
-                            <a class="entry__more-link" href="#0">Read More</a>
-                        </div> <!-- end entry__text -->
-
-                    </article> <!-- end article -->
-
-                    <article class="brick entry" data-aos="fade-up">
-
-                        <div class="entry__thumb">
-                            <a href="single-standard.html" class="thumb-link">
-                                <img src="{% static 'images/thumbs/masonry/jump-600.jpg' %}"
-                                    srcset="{% static 'images/thumbs/masonry/jump-600.jpg' %} 1x, {% static 'images/thumbs/masonry/jump-1200.jpg' %} 2x"
-                                    alt="">
-                            </a>
-                        </div> <!-- end entry__thumb -->
-
-                        <div class="entry__text">
-                            <div class="entry__header">
-                                <h1 class="entry__title"><a href="single-standard.html">Create Meaningful Family
-                                        Moments.</a></h1>
-
-                                <div class="entry__meta">
-                                    <span class="byline"">By:
-                                        <span class='author'>
-                                            <a href=" #0">Naruto Uzumaki</a>
-                                    </span>
-                                    </span>
-                                    <span class="cat-links">
-                                        <a href="#">Family</a>
-                                        <a href="#">Relationship</a>
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="entry__excerpt">
-                                <p>
-                                    Lorem ipsum Sed eiusmod esse aliqua sed incididunt aliqua incididunt mollit id et
-                                    sit proident dolor nulla sed commodo est ad minim elit reprehenderit nisi officia
-                                    aute incididunt velit sint in aliqua cillum in consequat consequat in culpa in anim.
-                                </p>
-                            </div>
-                            <a class="entry__more-link" href="#0">Read More</a>
-                        </div> <!-- end entry__text -->
-
-                    </article> <!-- end article -->
-
+                {% endfor %}
                 </div> <!-- end brick-wrapper -->
 
             </div> <!-- end masonry -->
