@@ -2,15 +2,17 @@ from django.shortcuts import render, get_object_or_404
 from .models import *
 
 
-def index(request):
+def index(request, slug=None):
     posts = Post.objects.filter(status=True)
+    if slug:
+        posts = posts.filter(author__name = slug)
     context = {'posts':posts}
     return render(request, 'index.html', context)
 
 
 def single_post(request,slug):
     posts = get_object_or_404(Post, pk=slug)
-    context = {'posts':posts}
+    context = {'post':posts}
     return render(request, 'single-post.html', context)
 
 

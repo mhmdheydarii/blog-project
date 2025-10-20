@@ -1,11 +1,21 @@
 from django.db import models
 
 
+class Author(models.Model):
+    name = models.CharField(max_length=250)
+
+    def __str__(self):
+        return self.name
+    
+    class Meta:
+        ordering = ['name']
+
+
 class Post(models.Model):
     title = models.CharField(max_length=350)
     description = models.TextField()
     image = models.ImageField(upload_to='media', null=True, blank=True)
-    author = models.CharField() 
+    author = models.ForeignKey(Author, on_delete=models.CASCADE)
     # catgory = 
     # tag = 
     status = models.BooleanField(default=False)

@@ -12,7 +12,7 @@
 
                 <div class="s-content__media">
                     <div class="s-content__post-thumb">
-                        <img src="{{posts.image}}" srcset="{% static 'images/thumbs/single/single-post-2100.jpg' %} 2100w, 
+                        <img src="{{post.image}}" srcset="{% static 'images/thumbs/single/single-post-2100.jpg' %} 2100w, 
                                          {% static 'images/thumbs/single/single-post-1050.jpg' %} 1050w, 
                                          {% static 'images/thumbs/single/single-post-525.jpg' %} 525w"
                             sizes="(max-width: 2100px) 100vw, 2100px" alt="">
@@ -20,14 +20,14 @@
                 </div> <!-- end s-content__media -->
 
                 <div class="s-content__entry-header">
-                    <h1 class="s-content__title s-content__title--post">{{posts.title}}</h1>
+                    <h1 class="s-content__title s-content__title--post">{{post.title}}</h1>
                 </div> <!-- end s-content__entry-header -->
 
                 <div class="s-content__primary">
 
                     <div class="s-content__entry-content">
 
-                        <p>{{posts.description}}</p>
+                        <p>{{post.description}}</p>
 
 
                     </div> <!-- end s-entry__entry-content -->
@@ -40,7 +40,7 @@
                             </div>
                             <div class="byline">
                                 <span class="bytext">Posted By</span>
-                                <a href="#0">{{posts.author}}</a>
+                                <a href="{% url 'pages:author' post.author.name %}">{{post.author}}</a>
                             </div>
                         </div>
 
@@ -55,7 +55,7 @@
                                 </div>
 
                                 <span>On</span>
-                                {{posts.published_date|date:'d M'}}
+                                {{post.published_date|date:'d M'}}
                             </div>
 
                             <div class="entry-tags meta-blk">

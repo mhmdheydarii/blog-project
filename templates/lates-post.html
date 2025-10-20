@@ -1,7 +1,20 @@
 {% for post in posts %}
-<h1 class="s-hero__slide-text">
-    <a href="{% url 'pages:single_post' post.id %}">
-        {{post.title}}
-    </a>
-</h1>
+<div class="row s-hero__slide-content animate-this">
+    <div class="column">
+        <div class="s-hero__slide-meta">
+
+            <span class="byline">
+                Posted by
+                <span class="author">
+                    <a href="{% url 'pages:author' post.author.name %}">{{post.author}}</a>
+                </span>
+            </span>
+        </div>
+        <h1 class="s-hero__slide-text">
+            <a href="{% url 'pages:single_post' post.id %}">
+                {{post.title}}
+            </a>
+        </h1>
+    </div>
+</div>
 {% endfor %}
