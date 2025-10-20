@@ -1,4 +1,6 @@
 {% load static %}
+{% load pages_quary %}
+
 <!DOCTYPE html>
 <html class="no-js" lang="en">
 
@@ -142,11 +144,7 @@
                                 </span>
                             </span>
                         </div>
-                        <h1 class="s-hero__slide-text">
-                            <a href="#0">
-                                Tips and Ideas to Help You Start Freelancing.
-                            </a>
-                        </h1>
+                        {% include "lates-post.html" %}
                     </div>
                 </div>
 

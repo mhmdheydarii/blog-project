@@ -1,0 +1,7 @@
+{% for post in posts %}
+<h1 class="s-hero__slide-text">
+    <a href="{% url 'pages:single_post' post.id %}">
+        {{post.title}}
+    </a>
+</h1>
+{% endfor %}
