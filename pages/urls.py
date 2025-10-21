@@ -8,7 +8,7 @@ urlpatterns = [
     path('post/<int:slug>', single_post, name = 'single_post'),
     path('about/' , about, name = 'about'),
     path('contact/', contact, name = 'contact'),
-    path('catgory/', catgory, name = 'catgory'),
+    path('catgory/<str:pk>/', catgory, name = 'catgory'),
     path('search/', search, name = 'search'),
     path('author/<str:slug>/', index, name = 'author'),
 ]

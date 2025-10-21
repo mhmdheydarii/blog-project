@@ -48,10 +48,10 @@
 
                             <div class="entry-cat-links meta-blk">
                                 <div class="cat-links">
+                                    {% for cat in post.catgory.all %}
                                     <span>In</span>
-                                    <a href="#0">Frontend</a>
-                                    <a href="#0">Design</a>
-                                    <a href="#0">Work</a>
+                                    <a href="{% url 'pages:catgory' cat.name %}">{{cat.name}}</a>
+                                    {% endfor %}
                                 </div>
 
                                 <span>On</span>

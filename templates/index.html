@@ -67,14 +67,9 @@
                     <li class="has-children">
                         <a href="#0" title="">Categories</a>
                         <ul class="sub-menu">
-                            <li><a href="category.html">Design</a></li>
-                            <li><a href="category.html">Lifestyle</a></li>
-                            <li><a href="category.html">Photography</a></li>
-                            <li><a href="category.html">Vacation</a></li>
-                            <li><a href="category.html">Work</a></li>
-                            <li><a href="category.html">Health</a></li>
-                            <li><a href="category.html">Family</a></li>
-                            <li><a href="category.html">Relationship</a></li>
+                        {% for cat in categories %}
+                            <li><a href="{% url 'pages:catgory' cat.name %}">{{cat.name}}</a></li>
+                        {% endfor %}
                         </ul>
                     </li>
 
@@ -196,9 +191,13 @@
                                             <a href=" {% url 'pages:author' post.author.name %}">{{post.author}}</a>
                                         </span>
                                     </span>
+                                    
+                                    {% for cat in post.catgory.all %}
                                     <span class="cat-links">
-                                        <a href="https://www.dreamhost.com/r.cgi?287326">Site Partner</a>
+                                        <a href="{% url 'pages:catgory' cat.name %}">{{cat.name}}</a>
                                     </span>
+                                    {% endfor %}
+                                    
                                 </div>
                             </div>
                             <div class="entry__excerpt">
