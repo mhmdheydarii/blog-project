@@ -12,7 +12,7 @@ def index(request, slug=None):
 
 
 def single_post(request,slug):
-    post = get_object_or_404(Post, slug=slug)
+    post = get_object_or_404(Post, pk=slug)
     context = {'post':post}
     return render(request, 'single-post.html', context)
 
