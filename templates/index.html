@@ -194,7 +194,7 @@
                                     
                                     {% for cat in post.catgory.all %}
                                     <span class="cat-links">
-                                        <a href="{% url 'pages:catgory' cat.name %}">{{cat.name}}</a>
+                                        <a href="{% url 'pages:catgory' cat.name %}">{{cat.name}} {% if not forloop.last %}, {% endif %}</a>
                                     </span>
                                     {% endfor %}
                                     

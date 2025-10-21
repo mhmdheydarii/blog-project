@@ -11,4 +11,5 @@ urlpatterns = [
     path('catgory/<str:pk>/', catgory, name = 'catgory'),
     path('search/', search, name = 'search'),
     path('author/<str:slug>/', index, name = 'author'),
+    path('tag/<str:tag_name>/', index, name = 'tag'),
 ]

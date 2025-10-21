@@ -1,5 +1,5 @@
 from django.db import models
-
+from taggit.managers import TaggableManager
 
 class Author(models.Model):
     name = models.CharField(max_length=250)
@@ -29,7 +29,7 @@ class Post(models.Model):
     image = models.ImageField(upload_to='media', null=True, blank=True)
     author = models.ForeignKey(Author, on_delete=models.CASCADE)
     catgory = models.ManyToManyField(Catgory)
-    # tag = 
+    tag = TaggableManager()
     status = models.BooleanField(default=False)
     # comment = 
     created_date = models.DateTimeField(auto_now_add=True)

@@ -2,11 +2,13 @@ from django.shortcuts import render, get_object_or_404
 from .models import *
 
 
-def index(request, slug=None):
+def index(request, slug=None, tag_name=None):
     posts = Post.objects.filter(status=True)
     categories = Catgory.objects.all()
     if slug:
         posts = posts.filter(author__name = slug)
+    if tag_name:
+        posts = posts.filter(tag__name = tag_name)
     context = {'posts':posts, 'categories':categories}
     return render(request, 'index.html', context)
 

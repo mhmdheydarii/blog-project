@@ -48,8 +48,9 @@
 
                             <div class="entry-cat-links meta-blk">
                                 <div class="cat-links">
-                                    {% for cat in post.catgory.all %}
+                                    
                                     <span>In</span>
+                                    {% for cat in post.catgory.all %}
                                     <a href="{% url 'pages:catgory' cat.name %}">{{cat.name}}</a>
                                     {% endfor %}
                                 </div>
@@ -60,10 +61,9 @@
 
                             <div class="entry-tags meta-blk">
                                 <span class="tagtext">Tags</span>
-                                <a href="#">orci</a>
-                                <a href="#">lectus</a>
-                                <a href="#">varius</a>
-                                <a href="#">turpis</a>
+                                {% for tag in post.tag.all %}
+                                <a href="{% url 'pages:tag' tag.name %}"> {{tag.name}} {% if not forloop.last %}, {% endif %}</a>
+                                {% endfor %}
                             </div>
 
                         </div>
