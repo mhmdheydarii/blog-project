@@ -15,7 +15,10 @@ def index(request, author=None, tag_name=None):
 
 def single_post(request,pk):
     post = get_object_or_404(Post, pk=pk)
-    context = {'post':post}
+
+    next_post = Post.objects.filter(status=True, id__gt=post.id).order_by('id').first()
+    prev_post = Post.objects.filter(status=True, id__lt=post.id).order_by('-id').first()
+    context = {'post':post, 'next_post':next_post ,'prev_post':prev_post}
     return render(request, 'single-post.html', context)
 
 

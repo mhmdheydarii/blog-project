@@ -72,16 +72,20 @@
 
                     <div class="s-content__pagenav">
                         <div class="prev-nav">
-                            <a href="#" rel="prev">
+                            {% if prev_post %}
+                            <a href="{% url 'pages:single_post' prev_post.id %}" rel="prev">
                                 <span>Previous</span>
-                                Tips on Minimalist Design
+                                {{prev_post.title}}
                             </a>
+                            {% endif %}
                         </div>
                         <div class="next-nav">
-                            <a href="#" rel="next">
+                            {% if next_post %}
+                            <a href="{% url 'pages:single_post' next_post.id %}" rel="next">
                                 <span>Next</span>
-                                A Practical Guide to a Minimalist Lifestyle.
+                                {{next_post.title}}
                             </a>
+                            {% endif %}
                         </div>
                     </div> <!-- end s-content__pagenav -->
 
