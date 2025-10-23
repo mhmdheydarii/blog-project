@@ -11,7 +11,7 @@ class Author(models.Model):
         ordering = ['name']
 
 
-class Catgory(models.Model):
+class Category(models.Model):
     name = models.CharField(max_length=150)
 
 
@@ -28,7 +28,7 @@ class Post(models.Model):
     description = models.TextField()
     image = models.ImageField(upload_to='media', null=True, blank=True)
     author = models.ForeignKey(Author, on_delete=models.CASCADE)
-    catgory = models.ManyToManyField(Catgory)
+    category = models.ManyToManyField(Category)
     tag = TaggableManager()
     status = models.BooleanField(default=False)
     # comment = 

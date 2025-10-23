@@ -5,11 +5,11 @@ app_name = 'pages'
 
 urlpatterns = [
     path('', index, name = 'index'),
-    path('post/<int:slug>', single_post, name = 'single_post'),
+    path('post/<int:pk>', single_post, name = 'single_post'),
     path('about/' , about, name = 'about'),
     path('contact/', contact, name = 'contact'),
-    path('catgory/<str:pk>/', catgory, name = 'catgory'),
+    path('category/<str:category>/', category, name = 'category'),
     path('search/', search, name = 'search'),
-    path('author/<str:slug>/', index, name = 'author'),
+    path('author/<str:author>/', index, name = 'author'),
     path('tag/<str:tag_name>/', index, name = 'tag'),
 ]

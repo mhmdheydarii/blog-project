@@ -6,4 +6,4 @@ class AdminPost(admin.ModelAdmin):
 
 admin.site.register(Post, AdminPost)
 admin.site.register(Author)
-admin.site.register(Catgory)
+admin.site.register(Category)

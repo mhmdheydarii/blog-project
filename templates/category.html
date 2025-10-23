@@ -68,7 +68,7 @@
                         <a href="#0" title="">Categories</a>
                         <ul class="sub-menu">
                             {% for cat in categories %}
-                            <li><a href="{% url 'pages:catgory' cat.name %}">{{cat.name}}</a></li>
+                            <li><a href="{% url 'pages:category' cat.name %}">{{cat.name}}</a></li>
                             {% endfor %}
                         </ul>
                     </li>
@@ -169,8 +169,8 @@
                                         </span>
                                     </span>
                                     <span class="cat-links">
-                                        {% for cat in post.catgory.all %}
-                                        <a href="{% url 'pages:catgory' cat.name %}">{{cat.name}}</a>
+                                        {% for cat in post.category.all %}
+                                        <a href="{% url 'pages:category' cat.name %}">{{cat.name}}</a>
                                         {% endfor %}
                                     </span>
                                 </div>
