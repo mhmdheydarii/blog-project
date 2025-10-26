@@ -67,9 +67,9 @@
                     <li class="has-children">
                         <a href="#0" title="">Categories</a>
                         <ul class="sub-menu">
-                        {% for cat in categories %}
+                            {% for cat in categories %}
                             <li><a href="{% url 'pages:category' cat.name %}">{{cat.name}}</a></li>
-                        {% endfor %}
+                            {% endfor %}
                         </ul>
                     </li>
 
@@ -183,7 +183,8 @@
 
                         <div class="entry__text">
                             <div class="entry__header">
-                                <h1 class="entry__title"><a href="{% url 'pages:single_post' post.id %}">{{post.title}}</a></h1>
+                                <h1 class="entry__title"><a
+                                        href="{% url 'pages:single_post' post.id %}">{{post.title}}</a></h1>
 
                                 <div class="entry__meta">
                                     <span class="byline">By:
@@ -191,13 +192,13 @@
                                             <a href=" {% url 'pages:author' post.author.name %}">{{post.author}}</a>
                                         </span>
                                     </span>
-                                    
+
                                     {% for cat in post.category.all %}
                                     <span class="cat-links">
                                         <a href="{% url 'pages:category' cat.name %}">{{cat.name}} {% if not forloop.last %}, {% endif %}</a>
                                     </span>
                                     {% endfor %}
-                                    
+
                                 </div>
                             </div>
                             <div class="entry__excerpt">
@@ -216,25 +217,35 @@
 
             <div class="row">
                 <div class="column large-12">
+
                     <nav class="pgn">
                         <ul>
+                            {% if posts.has_previous %}
                             <li>
-                                <span class="pgn__prev" href="#0">
+                                <a class="pgn__prev" href="?page={{ posts.previous_page_number }}">
                                     Prev
-                                </span>
+                                </a>
                             </li>
-                            <li><a class="pgn__num" href="#0">1</a></li>
-                            <li><span class="pgn__num current">2</span></li>
-                            <li><a class="pgn__num" href="#0">3</a></li>
-                            <li><a class="pgn__num" href="#0">4</a></li>
-                            <li><a class="pgn__num" href="#0">5</a></li>
-                            <li><span class="pgn__num dots">…</span></li>
-                            <li><a class="pgn__num" href="#0">8</a></li>
+                            {% endif %}
+
+                            {% for i in posts.paginator.page_range %}
+                            {% if posts.number == i %}
+                            <li><span class="pgn__num current">
+                                    {{ i }}
+                                </span></li>
+                            {% else %}
+                            <li><span class="pgn__num">
+                                    {{ i }}
+                                </span></li>
+                            {% endif %}
+                            {% endfor %}
+                            {% if posts.has_next %}
                             <li>
-                                <span class="pgn__next" href="#0">
+                                <a class="pgn__next" href="?page={{ posts.next_page_number }}">
                                     Next
-                                </span>
+                                </a>
                             </li>
+                            {% endif %}
                         </ul>
                     </nav> <!-- end pgn -->
                 </div> <!-- end column -->

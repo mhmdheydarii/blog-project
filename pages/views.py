@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from .models import *
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 
 
 def index(request, author=None, tag_name=None):
@@ -9,6 +10,15 @@ def index(request, author=None, tag_name=None):
         posts = posts.filter(author__name = author)
     if tag_name:
         posts = posts.filter(tag__name = tag_name)
+    
+    posts = Paginator(posts, 3)
+    try:
+        page_number = request.GET.get('page')
+        posts = posts.get_page(page_number)
+    except PageNotAnInteger:
+        posts = posts.get_page(1)
+    except EmptyPage:
+        posts = posts.get_page(1)
     context = {'posts':posts, 'categories':categories}
     return render(request, 'index.html', context)
 
@@ -38,6 +48,15 @@ def category(request, author=None, category=None):
         posts = posts.filter(author__name = author)
     if category:
         posts = posts.filter(category__name = category)
+
+    posts = Paginator(posts, 3)
+    try:
+        page_number = request.GET.get('page')
+        posts = posts.get_page(page_number)
+    except PageNotAnInteger:
+        posts = posts.get_page(1)
+    except EmptyPage:
+        posts = posts.get_page(1)
     context = {'posts':posts, 'categories':categories}
     return render(request, 'category.html', context)
 
