@@ -7,3 +7,9 @@ class AdminPost(admin.ModelAdmin):
 admin.site.register(Post, AdminPost)
 admin.site.register(Author)
 admin.site.register(Category)
+
+
+class AdminContact(admin.ModelAdmin):
+    list_display = ['name', 'subject', 'created_date']
+
+admin.site.register(Contact, AdminContact)

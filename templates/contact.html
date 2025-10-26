@@ -70,35 +70,44 @@
                                 </p>
                             </div>
                         </div> <!-- end s-content__blocks -->
-
-                        <form name="cForm" id="cForm" class="s-content__form" method="post" action="">
-                            <fieldset>
+                        <form name="form" class="s-content__form" method="post" action="">
+                            {% csrf_token %}
 
                                 <div class="form-field">
-                                    <input name="cName" type="text" id="cName" class="h-full-width h-remove-bottom"
-                                        placeholder="Your Name" value="">
+                                    <input name="name" type="text" class="h-full-width h-remove-bottom"
+                                        placeholder="Your Name">
                                 </div>
 
                                 <div class="form-field">
-                                    <input name="cEmail" type="text" id="cEmail" class="h-full-width h-remove-bottom"
-                                        placeholder="Your Email" value="">
+                                    <input name="email" type="email"  class="h-full-width h-remove-bottom"
+                                        placeholder="Your Email" >
                                 </div>
 
                                 <div class="form-field">
-                                    <input name="cWebsite" type="text" id="cWebsite"
-                                        class="h-full-width h-remove-bottom" placeholder="Website" value="">
+                                    <input name="subject" type="text" 
+                                        class="h-full-width h-remove-bottom" placeholder="Subject" >
                                 </div>
 
                                 <div class="message form-field">
-                                    <textarea name="cMessage" id="cMessage" class="h-full-width"
+                                    <textarea name="message" class="h-full-width"
                                         placeholder="Your Message"></textarea>
                                 </div>
 
                                 <br>
                                 <button type="submit" class="submit btn btn--primary h-full-width">Submit</button>
-
-                            </fieldset>
-                        </form> <!-- end form -->
+                                {% if messages %}
+                                    
+                                        {% for message in messages %}
+                                            {% if message.tags %}
+                                                <div class="alert alert-success" role="alert">
+                                                    {{message}}
+                                                </div>
+                                            {% endif %}
+                                        {% endfor %}
+                                    
+                                {% endif %}
+                            
+                        </form>
 
                     </div> <!-- end s-entry__page-content -->
 

@@ -1,7 +1,8 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from .models import *
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
-
+from .forms import *
+from django.contrib import messages
 
 def index(request, author=None, tag_name=None):
     posts = Post.objects.filter(status=True)
@@ -37,7 +38,17 @@ def about(request):
 
 
 def contact(request):
-    return render(request, 'contact.html')
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Your Message Sendded For Admin')
+        else:
+            messages.error(request, 'Eror in Button')
+
+    form = ContactForm()
+    context = {'form':form}
+    return render(request, 'contact.html', context)
 
 
 def category(request, author=None, category=None):
