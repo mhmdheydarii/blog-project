@@ -96,17 +96,19 @@
                                 <br>
                                 <button type="submit" class="submit btn btn--primary h-full-width">Submit</button>
                                 {% if messages %}
-                                    
-                                        {% for message in messages %}
-                                            {% if message.tags %}
-                                                <div class="alert alert-success" role="alert">
-                                                    {{message}}
-                                                </div>
-                                            {% endif %}
-                                        {% endfor %}
-                                    
+                                <script>
+                                    {% for message in messages %}
+                                        Swal.fire({
+                                            icon: "{{ message.tags }}",
+                                            title : "<span style='font-size:1.3rem; font-weight:700;'>{{message}}</span>",
+                                            showConfirmButton : false,
+                                            timer : 5000,
+                                            toast : true,
+                                            position : 'top-end',
+                                        })
+                                    {% endfor %}
+                                </script>
                                 {% endif %}
-                            
                         </form>
 
                     </div> <!-- end s-entry__page-content -->

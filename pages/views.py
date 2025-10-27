@@ -42,9 +42,9 @@ def contact(request):
         form = ContactForm(request.POST)
         if form.is_valid():
             form.save()
-            messages.success(request, 'Your Message Sendded For Admin')
+            messages.success(request, 'Your message has been sent successfully!')
         else:
-            messages.error(request, 'Eror in Button')
+            messages.error(request, 'Please fill in all required fields before sending.')
 
     form = ContactForm()
     context = {'form':form}
