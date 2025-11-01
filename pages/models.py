@@ -31,7 +31,6 @@ class Post(models.Model):
     category = models.ManyToManyField(Category)
     tag = TaggableManager()
     status = models.BooleanField(default=False)
-    # comment = 
     created_date = models.DateTimeField(auto_now_add=True)
     published_date = models.DateTimeField(null=True, blank=True)
 
@@ -50,6 +49,22 @@ class Contact(models.Model):
     message = models.TextField()
     created_date = models.DateTimeField(auto_now_add=True)
     
+
+    def __str__(self):
+        return self.name
+    
+    class Meta:
+        ordering = ['-created_date']
+
+
+class Comment(models.Model):
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    name = models.CharField(max_length=100)
+    email = models.EmailField(max_length=150)
+    message = models.TextField()
+    is_approved = models.BooleanField(default=False)
+    created_date = models.DateTimeField(auto_now_add=True)
+
 
     def __str__(self):
         return self.name

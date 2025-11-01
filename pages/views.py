@@ -27,9 +27,20 @@ def index(request, author=None, tag_name=None):
 def single_post(request,pk):
     post = get_object_or_404(Post, pk=pk)
 
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.post = post
+            comment.save()
+            messages.success(request, 'Your comment has been sent successfully!')
+        else:
+            messages.error(request, 'Eror! try again')
+    form = CommentForm()
+    comments = Comment.objects.filter(post=post.id, is_approved=True)
     next_post = Post.objects.filter(status=True, id__gt=post.id).order_by('id').first()
     prev_post = Post.objects.filter(status=True, id__lt=post.id).order_by('-id').first()
-    context = {'post':post, 'next_post':next_post ,'prev_post':prev_post}
+    context = {'post':post, 'next_post':next_post ,'prev_post':prev_post, 'comments':comments, 'form':form}
     return render(request, 'single-post.html', context)
 
 

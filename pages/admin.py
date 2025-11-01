@@ -13,3 +13,9 @@ class AdminContact(admin.ModelAdmin):
     list_display = ['name', 'subject', 'created_date']
 
 admin.site.register(Contact, AdminContact)
+
+
+class AdminComment(admin.ModelAdmin):
+    list_display = ['name', 'is_approved', 'created_date']
+
+admin.site.register(Comment, AdminComment)
