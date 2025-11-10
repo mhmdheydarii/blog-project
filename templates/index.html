@@ -63,6 +63,12 @@
                 <h3 class="s-header__nav-heading h6">Navigate to</h3>
 
                 <ul class="s-header__nav">
+                {% if user.is_authenticated %}
+                    <li class="current"><a href="{% url 'account:logout' %}" title="">logout</a></li>
+                {% else %}
+                    <li class="current"><a href="{% url 'account:login' %}" title="">login</a></li>
+                    <li class="current"><a href="{% url 'account:signup' %}" title="">signup</a></li>
+                {% endif %}
                     <li class="current"><a href="{% url 'pages:index' %}" title="">Home</a></li>
                     <li class="has-children">
                         <a href="#0" title="">Categories</a>
