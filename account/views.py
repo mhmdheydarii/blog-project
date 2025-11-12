@@ -13,6 +13,8 @@ def login_view(request):
         if user is not None:
             login(request, user)
             return redirect('/')
+        else:
+            messages.error(request, 'Username or Password is wrong')
     return render(request, 'login.html')
 
 def logout_view(request):
@@ -29,5 +31,7 @@ def signup_view(request):
             user = form.cleaned_data.get('username')
             messages.success(request, 'Account was created successfully for ' + user)
             return redirect('account:login')
+        else:
+            messages.error(request, 'Plase fill in all fields')
     context = {'form':form}
     return render(request, 'signup.html', context)

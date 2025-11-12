@@ -13,10 +13,11 @@
 
                 <div class="s-content__media">
                     <div class="s-content__post-thumb">
-                        <img src="{{post.image}}" srcset="{% static 'images/thumbs/single/single-post-2100.jpg' %} 2100w, 
-                                         {% static 'images/thumbs/single/single-post-1050.jpg' %} 1050w, 
-                                         {% static 'images/thumbs/single/single-post-525.jpg' %} 525w"
+                        <!--<img src="{{post.image.url}}" srcset="{{post.image.url}} 2100w, 
+                                        {{post.image.url}} 1050w, 
+                                        {{post.image.url}} 525w"
                             sizes="(max-width: 2100px) 100vw, 2100px" alt="">
+                    -->
                     </div>
                 </div> <!-- end s-content__media -->
 
@@ -37,7 +38,7 @@
 
                         <div class="entry-author meta-blk">
                             <div class="author-avatar">
-                                <img class="avatar" src="{% static 'images/avatars/user-06.jpg' %}" alt="">
+                                <img class="avatar" src="" alt="">
                             </div>
                             <div class="byline">
                                 <span class="bytext">Posted By</span>
