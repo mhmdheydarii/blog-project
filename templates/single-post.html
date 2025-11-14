@@ -29,7 +29,7 @@
 
                     <div class="s-content__entry-content">
 
-                        <p>{{post.description}}</p>
+                        <p>{{post.description|safe}}</p>
 
 
                     </div> <!-- end s-entry__entry-content -->
@@ -111,10 +111,6 @@
                     {% if comments %}
                     {% for comment in comments %}
                     <li class="depth-1 comment">
-
-                        <div class="comment__avatar">
-                            <img class="avatar" src="{% static 'images/avatars/user-01.jpg' %}" alt="" width="50" height="50">
-                        </div>
 
                         <div class="comment__content">
 

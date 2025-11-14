@@ -1,8 +1,10 @@
 from django.contrib import admin
+from django_summernote.admin import SummernoteModelAdmin
 from .models import *
 
-class AdminPost(admin.ModelAdmin):
+class AdminPost(SummernoteModelAdmin):
     list_display = ['title', 'author', 'status', 'created_date']
+    summernote_fields = ('description')
 
 admin.site.register(Post, AdminPost)
 admin.site.register(Author)
@@ -19,3 +21,4 @@ class AdminComment(admin.ModelAdmin):
     list_display = ['name', 'is_approved', 'created_date']
 
 admin.site.register(Comment, AdminComment)
+

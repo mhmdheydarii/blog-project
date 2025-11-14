@@ -66,9 +66,9 @@
                     <li class="has-children">
                         <a href="#0" title="">Categories</a>
                         <ul class="sub-menu">
-                            {% for cat in categories %}
+                        {% for cat in categories %}
                             <li><a href="{% url 'pages:category' cat.name %}">{{cat.name}}</a></li>
-                            {% endfor %}
+                        {% endfor %}
                         </ul>
                     </li>
                     <li><a href="{% url 'pages:about' %}" title="">About</a></li>
@@ -159,7 +159,7 @@
                         <div class="entry__text">
                             <div class="entry__header">
                                 <h1 class="entry__title"><a
-                                        href="{% url 'pages:single_post' post.id %}">{{post.name}}</a></h1>
+                                        href="{% url 'pages:single_post' post.id %}">{{post.title}}</a></h1>
 
                                 <div class="entry__meta">
                                     <span class="byline">By:
@@ -176,7 +176,7 @@
                             </div>
                             <div class="entry__excerpt">
                                 <p>
-                                    {{post.description|truncatewords:30}}
+                                    {{post.description|truncatewords:30|safe}}
                                 </p>
                             </div>
                             <a class="entry__more-link" href="{% url 'pages:single_post' post.id %}">Learn More</a>

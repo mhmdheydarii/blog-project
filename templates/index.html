@@ -142,16 +142,6 @@
 
         </div> <!-- end s-hero__slider -->
 
-        <div class="s-hero__social hide-on-mobile-small">
-            <p>Follow</p>
-            <span></span>
-            <ul class="s-hero__social-icons">
-                <li><a href="https://instagram.com/mr.mhmdheydari"><i class="fab fa-instagram"
-                            aria-hidden="true"></i></a></li>
-                <li><a href="https://t.me/mr_mhmdheydari"><i class="fab fa-telegram" aria-hidden="true"></i></a></li>
-            </ul>
-        </div> <!-- end s-hero__social -->
-
 
 
     </section> <!-- end s-hero -->
@@ -211,7 +201,7 @@
                             </div>
                             <div class="entry__excerpt">
                                 <p>
-                                    {{post.description|truncatewords:30}}
+                                    {{post.description|truncatewords:30|safe}}
                                 </p>
                             </div>
                             <a class="entry__more-link" href="{% url 'pages:single_post' post.id %}">Learn More</a>

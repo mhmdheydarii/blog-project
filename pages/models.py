@@ -1,5 +1,8 @@
 from django.db import models
 from taggit.managers import TaggableManager
+from ckeditor.fields import RichTextField
+
+
 
 class Author(models.Model):
     name = models.CharField(max_length=250)
