@@ -176,7 +176,7 @@
                             </div>
                             <div class="entry__excerpt">
                                 <p>
-                                    {{post.description|truncatewords:30|safe}}
+                                    {{post.description|striptags|truncatewords:30}}
                                 </p>
                             </div>
                             <a class="entry__more-link" href="{% url 'pages:single_post' post.id %}">Learn More</a>
