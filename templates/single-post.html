@@ -160,6 +160,17 @@
                     {% csrf_token %}
                     
                         <input type="hidden" name="post" value={{post.id}}>
+                    {%if request.user.is_authenticated%}
+                        <div class="form-field">
+                            <input name="name" class="h-full-width h-remove-bottom" placeholder="Your Name"
+                                value="{{request.user.username}}" type="hidden">
+                        </div>
+
+                        <div class="form-field">
+                            <input name="email"  class="h-full-width h-remove-bottom"
+                                placeholder="Your Email" value="{{request.user.email}}" type="hidden">
+                        </div>
+                    {% else %}
                         <div class="form-field">
                             <input name="name" class="h-full-width h-remove-bottom" placeholder="Your Name"
                                 value="" type="text">
@@ -169,12 +180,12 @@
                             <input name="email"  class="h-full-width h-remove-bottom"
                                 placeholder="Your Email" value="" type="email">
                         </div>
-
+                    {% endif %}
                         <div class="message form-field">
                             <textarea name="message" class="h-full-width"
                                 placeholder="Your Message"></textarea>
                         </div>
-
+                    
                         <br>
                         <input name="submit" class="btn btn--primary btn-wide btn--large h-full-width"
                             value="Add Comment" type="submit">

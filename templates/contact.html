@@ -73,6 +73,17 @@
                         <form name="form" class="s-content__form" method="post" action="">
                             {% csrf_token %}
 
+                            {% if request.user.is_authenticated %}
+                                <div class="form-field">
+                                    <input name="name" type="hidden" value="{{request.user.username}}" class="h-full-width h-remove-bottom"
+                                        placeholder="Your Name">
+                                </div>
+
+                                <div class="form-field">
+                                    <input name="email" type="hidden" value="{{request.user.email}}" class="h-full-width h-remove-bottom"
+                                        placeholder="Your Email" >
+                                </div>
+                            {% else %}
                                 <div class="form-field">
                                     <input name="name" type="text" class="h-full-width h-remove-bottom"
                                         placeholder="Your Name">
@@ -82,7 +93,8 @@
                                     <input name="email" type="email"  class="h-full-width h-remove-bottom"
                                         placeholder="Your Email" >
                                 </div>
-
+                            {% endif %}
+                            
                                 <div class="form-field">
                                     <input name="subject" type="text" 
                                         class="h-full-width h-remove-bottom" placeholder="Subject" >
