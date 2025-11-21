@@ -152,8 +152,12 @@
             <div id="respond" class="column">
 
                 <h3>
+                    {% if request.user.is_authenticated %}
+                    Add Comment
+                    {% else %}
                     Add Comment
                     <span>Your email address will not be published.</span>
+                    {% endif %}
                 </h3>
 
                 <form name="form" method="post" action="" autocomplete="off">
