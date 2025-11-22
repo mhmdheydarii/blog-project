@@ -9,7 +9,7 @@ SECRET_KEY = 'django-insecure-d7v+n4w+*kxj3c7(7tavwj2(inhry42w6emurvhl6%vkrl3l*6
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['codleearn.runflare.run']
 
 MEDIA_ROOT = BASE_DIR / 'media/'
 STATIC_ROOT = BASE_DIR / 'static/'
